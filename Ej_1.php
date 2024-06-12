@@ -1,5 +1,5 @@
 <?php
-include 'tablas.php';
+require 'tablas.php';
 class Elementos
 {
     public $atributos = ['Titulo', 'Autor', 'Pais de Origen', 'Tamaño en Mb', 'Año de Publicacion', 'Idioma', 'Formato'];
@@ -24,9 +24,9 @@ class Elementos
 class Canciones extends Elementos
 {
     public $atributos_propios = ['Género', 'Reproducciones', 'Album'];
-
-    public function __construct(public string $titulo = '', public string $autor = '', public int $año_publicacion = 0, public string $pais_origen = '', public string $idioma = '', public int $tamaño_mb = 0, public string $formato = '', public string $genero = '', public int $reproducciones = 0, public string $album = '')
+    public function __construct($titulo, $autor , $año_publicacion, $pais_origen, $idioma , $tamaño_mb,  $formato, public string $genero = '', public int $reproducciones = 0, public string $album = '')
     {
+        parent::__construct($titulo, $autor ,$año_publicacion , $pais_origen, $idioma ,$tamaño_mb, $formato);
         $this->atributos = array_merge($this->atributos, $this->atributos_propios);
     }
     public function obtener_valores()
@@ -42,8 +42,9 @@ class Libros extends Elementos
 {
     public $atributos_propios = ['Editorial', 'Genero', 'Precio'];
 
-    public function __construct(public string $titulo, public string $autor, public int $año_publicacion, public string $pais_origen, public string $idioma, public int $tamaño_mb, public string $formato = '', public string $editorial, public string $genero, public int $precio)
+    public function __construct( $titulo,  $autor, $año_publicacion,  $pais_origen,  $idioma, $tamaño_mb,  $formato, public string $editorial, public string $genero, public int $precio)
     {
+        parent::__construct($titulo, $autor ,$año_publicacion , $pais_origen, $idioma ,$tamaño_mb, $formato);
         $this->atributos = array_merge($this->atributos, $this->atributos_propios);
     }
     public function obtener_valores()
@@ -58,10 +59,9 @@ class Libros extends Elementos
 class Fotos extends Elementos
 {
     public $atributos_propios = ['Dispositivo', 'Color', 'Resolucion'];
-
-
-    public function __construct(public string $titulo, public string $autor, public int $año_publicacion, public string $pais_origen, public string $idioma, public int $tamaño_mb, public string $formato = '', public string $dispositivo, public bool $color, public string $resolucion)
+    public function __construct($titulo, $autor, $año_publicacion, $pais_origen,$idioma, $tamaño_mb, $formato, public string $dispositivo, public bool $color, public string $resolucion)
     {
+        parent::__construct($titulo, $autor ,$año_publicacion , $pais_origen, $idioma ,$tamaño_mb, $formato);
         $this->atributos = array_merge($this->atributos, $this->atributos_propios);
     }
     public function obtener_valores()
@@ -77,8 +77,9 @@ class Videos extends Elementos
 {
     public $atributos_propios = ['Duración', 'Reproducciones', 'Relacion-Aspecto'];
 
-    public function __construct(public string $titulo, public  string $autor, public int $año_publicacion, public string $pais_origen, public string $idioma, public int $tamaño_mb, public string $formato = '', public string $duracion, public int $reproducciones, public string $relacion_aspecto)
+    public function __construct( $titulo,$autor, $año_publicacion,  $pais_origen,  $idioma, $tamaño_mb,  $formato, public string $duracion, public int $reproducciones, public string $relacion_aspecto)
     {
+        parent::__construct($titulo, $autor ,$año_publicacion , $pais_origen, $idioma ,$tamaño_mb, $formato);
         $this->atributos = array_merge($this->atributos, $this->atributos_propios);
     }
     public function obtener_valores()
@@ -93,9 +94,9 @@ class Videos extends Elementos
 class Juegos extends Elementos
 {
     public $atributos_propios = ['Plataforma', 'Modo-Juego', 'Requerimiento-RAM'];
-
-    public function __construct(public string $titulo, public string $autor, public int $año_publicacion, public string $pais_origen, public string $idioma, public int $tamaño_mb, public string $formato = '', public string $plataforma, public string $modo_juego, public int $requerimento_ram_mb)
+    public function __construct($titulo, $autor, $año_publicacion, $pais_origen, $idioma, $tamaño_mb, $formato, public string $plataforma, public string $modo_juego, public int $requerimento_ram_mb)
     {
+        parent::__construct($titulo, $autor ,$año_publicacion , $pais_origen, $idioma ,$tamaño_mb, $formato);
         $this->atributos = array_merge($this->atributos, $this->atributos_propios);
     }
     public function obtener_valores()
